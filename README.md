@@ -2,8 +2,6 @@
 
 Detects helmets and safety vests on people in video, classifies each person as **SAFE** (helmet + vest), **PARTIAL** (only one), or **UNSAFE** (no gear). Writes annotated video and saves evidence (snapshots + CSV) for violations.
 
-Based on [ADiTyaRaj8969/Safety-Vest-and-Helmet-Detection](https://github.com/ADiTyaRaj8969/Safety-Vest-and-Helmet-Detection).
-
 ## Setup (one time)
 
 From the project directory, install in editable mode so you can run the commands from any directory:
