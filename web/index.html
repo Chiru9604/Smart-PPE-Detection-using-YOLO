@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safety Vest & Helmet Detection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="layout">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">🦺</span>
+        <h1>Safety Vest & Helmet Detection</h1>
+      </div>
+      <p class="tagline">Upload a video for live detection, or run real-time on camera / RTSP.</p>
+      <nav class="tabs" role="tablist">
+        <button type="button" class="tab active" data-tab="upload" aria-selected="true">Upload video</button>
+        <button type="button" class="tab" data-tab="live" aria-selected="false">Live monitor</button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <!-- Upload flow -->
+      <div class="tab-panel" id="panelUpload">
+        <section class="upload-section" id="uploadSection">
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="fileInput" accept="video/mp4,video/avi,video/quicktime,video/x-matroska" hidden />
+            <div class="dropzone-content">
+              <span class="dropzone-icon">📤</span>
+              <p class="dropzone-title">Drop your video here or click to browse</p>
+              <p class="dropzone-hint">MP4, AVI, MOV, MKV — max 500 MB. You’ll see detection live, then can download.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="progress-section hidden" id="progressSection">
+          <div class="live-view-wrap">
+            <p class="live-view-label">Live detection</p>
+            <div class="live-view">
+              <img id="liveFeed" src="" alt="Live detection feed" />
+            </div>
+          </div>
+          <div class="card progress-card">
+            <div class="spinner" aria-hidden="true"></div>
+            <h2 id="progressTitle">Processing your video…</h2>
+            <p id="progressText">Detection is running. Watch above; download when done.</p>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="result-section hidden" id="resultSection">
+          <div class="card result-card">
+            <span class="result-icon">✅</span>
+            <h2>Done</h2>
+            <p>Your annotated video is ready. Download below or upload another.</p>
+            <a class="btn btn-primary" id="downloadBtn" href="#" download>Download annotated video</a>
+            <button type="button" class="btn btn-ghost" id="uploadAnotherBtn">Upload another video</button>
+          </div>
+        </section>
+
+        <section class="error-section hidden" id="errorSection">
+          <div class="card error-card">
+            <span class="error-icon">⚠️</span>
+            <h2>Something went wrong</h2>
+            <p id="errorText"></p>
+            <button type="button" class="btn btn-ghost" id="retryBtn">Try again</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Live monitor flow -->
+      <div class="tab-panel hidden" id="panelLive">
+        <section class="live-section">
+          <div class="card live-control-card">
+            <label class="live-label" for="liveSource">Camera or RTSP URL</label>
+            <input type="text" id="liveSource" placeholder="0 or rtsp://..." value="0" class="live-input" />
+            <div class="live-actions">
+              <button type="button" class="btn btn-primary" id="liveStartBtn">Start stream</button>
+              <button type="button" class="btn btn-danger hidden" id="liveStopBtn">Stop stream</button>
+            </div>
+            <p class="live-hint">Use <code>0</code> for default webcam, or an RTSP URL for CCTV.</p>
+          </div>
+          <div class="live-view-wrap">
+            <div class="live-view-header">
+              <p class="live-view-label" id="liveStatusText">Stream stopped</p>
+              <p class="live-metrics" id="liveMetrics" aria-live="polite">—</p>
+            </div>
+            <div class="live-view live-view-large">
+              <img id="liveMonitorFeed" src="" alt="Live monitor feed" />
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>Powered by YOLOv8 · SAFE (green) · PARTIAL (yellow/cyan) · UNSAFE (red)</p>
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

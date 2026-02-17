@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safety-vest-helmet-detection"
+version = "1.0.0"
+description = "Safety vest and helmet detection on video (SAFE / PARTIAL / UNSAFE) with CLI and web app"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ultralytics>=8.0.0",
+    "opencv-python>=4.8.0",
+    "numpy>=1.24.0",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "python-multipart>=0.0.6",
+]
+
+[project.scripts]
+safety-vest = "safety_vest_cli:main"
+safety-vest-web = "safety_vest_web:main"
+
+[tool.setuptools]
+py-modules = ["safety_vest_cli", "safety_vest_web"]

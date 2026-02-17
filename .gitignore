@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+.venv/
+venv/
+env/
+
+outputs/
+web_uploads/
+web_outputs/
+videos/
+
+*.egg-info/
+dist/
+build/
+
+.DS_Store
+Thumbs.db
+
+# Model weights (keep out of git; provide download instructions in README)
+*.pt

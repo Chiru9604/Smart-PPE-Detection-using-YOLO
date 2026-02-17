@@ -1,0 +1,8 @@
+# Safety Vest and Helmet Detection - end-to-end video pipeline
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+# Web backend
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
